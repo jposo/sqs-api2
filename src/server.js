@@ -82,12 +82,12 @@ const listenSqs = () => {
     AttributeNames: ['SentTimestamp'],
     MaxNumberOfMessages: 10,
     MessageAttributeNames: ['All'],
-    QueueUrl: '',
+    QueueUrl: 'https://sqs.us-east-1.amazonaws.com/147820604610/orders-queue',
     VisibilityTimeout: 20,
     WaitTimeSeconds: 0,
   };
 
-  const interval = setInterval(() => {
+  setInterval(() => {
     sqs.receiveMessage(params, (err, data) => {
       if (err) {
         console.error('Error receiving message', err);
@@ -111,8 +111,6 @@ const listenSqs = () => {
       }
     });
   }, 5000);
-
-  clearInterval(interval);
 };
 
 init();
