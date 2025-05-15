@@ -60,7 +60,7 @@ const endpoints = (app) => {
     const order = await Order.findByPk(req.params.id);
     if (order) {
       await order.update(req.body);
-      res.json(user);
+      res.json(order);
     } else {
       res.status(404).json({ message: 'Order not found' });
     }
